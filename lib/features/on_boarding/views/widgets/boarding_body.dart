@@ -13,7 +13,7 @@ final PageController pageController ;
       controller: pageController,
       children: [
         PageviewItem(
-          isVisible: (pageController.hasClients ? pageController.page!.round() :0) == 0,
+          isVisible: true,
           image: AppImages.pageViewLogo1,
           backgroundImage: AppImages.pageViewBackGground1,
           subtitle:
@@ -31,7 +31,7 @@ final PageController pageController ;
         ),
 
         PageviewItem(
-          isVisible: (pageController.hasClients ? pageController.page!.round() :0) != 0,
+          isVisible: false,
           image: AppImages.pageViewLogo2,
           backgroundImage: AppImages.pageViewBackGground2,
           subtitle:

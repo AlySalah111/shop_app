@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:shop_app/core/utils/app_textStyle.dart';
+import 'package:shop_app/features/auth/views/login_view.dart';
 
 class PageviewItem extends StatelessWidget {
   const PageviewItem({
@@ -33,7 +34,15 @@ final bool isVisible;
         visible: isVisible,
          child: Padding(
            padding: const EdgeInsets.all(40.0),
-           child: Text('تخطي',style: TextStyles.regular13,),
+           child: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, LoginView.routeName);
+            },
+            child: 
+            Text('تخطي',
+            style: TextStyles.regular13,
+            ),
+            ),
          ),
        )
         ],

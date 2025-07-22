@@ -1,7 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/core/helper_function/constant/constants.dart';
+import 'package:shop_app/core/helper_function/services/preferences.dart';
 import 'package:shop_app/core/utils/app_colors.dart';
 import 'package:shop_app/core/widgets/custom_button.dart';
+import 'package:shop_app/features/auth/views/login_view.dart';
 import 'package:shop_app/features/on_boarding/views/widgets/boarding_body.dart';
 
 class OnBoardingViews extends StatefulWidget {
@@ -60,7 +63,10 @@ class _OnBoardingViewsState extends State<OnBoardingViews> {
               maintainState: true,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: CustomButton(onPressed: (){}, text: 'ابدأ الان'),
+                child: CustomButton(onPressed: (){
+                  Prefs.setBool(kOnBoardingScreenViewd, true);
+                  Navigator.pushReplacementNamed(context, LoginView.routeName);
+                }, text: 'ابدأ الان'),
               ),
             ),
             SizedBox(

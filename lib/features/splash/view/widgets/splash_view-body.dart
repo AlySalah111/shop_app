@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:shop_app/core/helper_function/constant/constants.dart';
+import 'package:shop_app/core/helper_function/services/preferences.dart';
 import 'package:shop_app/core/utils/app_images.dart';
+import 'package:shop_app/features/auth/views/login_view.dart';
 import 'package:shop_app/features/on_boarding/views/on_boarding_views.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -15,9 +18,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, OnBoardingViews.routeName);
-    });
+    excuteNavigation();
   }
   @override
   Widget build(BuildContext context) {
@@ -43,4 +44,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       ),
     );
   }
+  
+  void excuteNavigation() async {
+  bool onBoardingScreenViewd = await Prefs.getBool(kOnBoardingScreenViewd) ?? false;
+  Future.delayed(const Duration(seconds: 2), () {
+    if (onBoardingScreenViewd) {
+      Navigator.pushReplacementNamed(context, LoginView.routeName);
+    } else {
+      Navigator.pushReplacementNamed(context, OnBoardingViews.routeName);
+    }
+  });
+}
 }
